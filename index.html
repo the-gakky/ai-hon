@@ -5,199 +5,302 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookHub - 本好きが集まるコミュニティ</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --font-sans: 'Noto Sans JP', sans-serif;
+            --color-text: #4a4a4a; /* Soft Dark Gray */
+            --color-background: #fcfafa; /* Off-white */
+            --color-primary: #8a8aff; /* Soft Lavender */
+            --color-primary-dark: #6a6aff;
+            --color-secondary: #6c757d; /* Muted Gray */
+            --color-light-gray: #f0f2f5;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.8;
+            font-family: var(--font-sans);
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: #fdfdfd;
-            color: #333;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: auto;
             overflow: hidden;
-            padding: 0 20px;
+            padding: 0 25px;
         }
         .header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--color-light-gray);
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         .header h1 {
             margin: 0;
-            font-family: 'Exo 2', sans-serif;
-            font-size: 2.8em;
+            font-family: var(--font-sans);
+            font-size: 2.2em;
             font-weight: 700;
-            color: #2c2c2c;
-            letter-spacing: 1.5px;
+            color: var(--color-primary);
+            letter-spacing: 1px;
         }
         .header p {
-            margin: 8px 0 0;
-            font-size: 1em;
-            color: #555;
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: var(--color-secondary);
             font-weight: 400;
-            letter-spacing: 0.5px;
         }
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2070&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: #fff;
-            padding: 120px 20px;
+            padding: 130px 20px;
             text-align: center;
-            position: relative;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 40px;
         }
         .hero h2 {
-            font-size: 3.5em;
+            font-family: var(--font-sans);
+            font-size: 3.2em;
             font-weight: 700;
             margin-top: 0;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
         .hero p {
-            font-size: 1.3em;
-            margin-bottom: 40px;
+            font-size: 1.2em;
+            margin-bottom: 35px;
             font-weight: 300;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .btn {
             display: inline-block;
-            background-image: linear-gradient(45deg, #1DA1F2, #0c85d0);
+            background: var(--color-primary);
             color: #fff;
-            padding: 15px 35px;
+            padding: 14px 30px;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 30px;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(29, 161, 242, 0.4);
+            font-size: 1em;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             border: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(45deg, #0c85d0, #1DA1F2);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .btn:hover:before {
-            left: 0;
+            box-shadow: 0 4px 12px rgba(138, 138, 255, 0.3);
+            box-sizing: border-box;
+            text-align: center;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(29, 161, 242, 0.5);
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(138, 138, 255, 0.4);
         }
         .btn.discord {
-            background-image: linear-gradient(45deg, #5865F2, #4752c4);
-            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
-        }
-
-        .btn.discord:before {
-            background-image: linear-gradient(45deg, #4752c4, #5865F2);
+            background: #7289da;
+            box-shadow: 0 4px 12px rgba(114, 137, 218, 0.3);
         }
         .btn.discord:hover {
-            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5);
+            background: #677bc4;
+            box-shadow: 0 6px 15px rgba(114, 137, 218, 0.4);
         }
         .section {
             padding: 80px 0;
+        }
+        .section-header {
             text-align: center;
-        }
-        .section h3 {
-            font-size: 2.5em;
             margin-bottom: 60px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
         }
-        .section h3::after {
+        .section-header h3 {
+            font-family: var(--font-sans);
+            font-size: 2.4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+        }
+        .section-header p {
+            font-size: 1em;
+            color: var(--color-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-header::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: #1DA1F2;
+            display: block;
+            margin: 15px auto 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
         }
         .features {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 25px;
+            text-align: left;
         }
         .feature-item {
             background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            width: calc(33.333% - 60px);
-            min-width: 280px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            width: calc(33.333% - 50px);
+            min-width: 270px;
             box-sizing: border-box;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--color-primary);
         }
         .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .feature-item h4 {
-            font-size: 1.5em;
+            font-family: var(--font-sans);
+            font-size: 1.4em;
             margin-top: 0;
-            margin-bottom: 15px;
-            color: #1DA1F2;
+            margin-bottom: 12px;
+            color: var(--color-primary);
             font-weight: 700;
         }
         .feature-item p {
-            font-size: 1em;
-            color: #555;
+            font-size: 0.95em;
+            color: var(--color-text);
         }
         .cta {
-            background: linear-gradient(45deg, #5865F2, #1DA1F2);
+            background-color: var(--color-primary);
             color: white;
-            padding: 80px 20px;
+            padding: 90px 20px;
             text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: 40px;
         }
         .cta h3 {
-            font-size: 2.5em;
-            margin: 0 0 20px 0;
+            font-family: var(--font-sans);
+            font-size: 2.4em;
+            margin: 0 0 15px 0;
             font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .cta p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 300;
+            max-width: 550px;
+            margin: 0 auto 35px;
         }
         .cta .btn {
             background: #fff;
-            color: #5865F2;
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
         }
         .cta .btn:hover {
-            background: #f0f0f0;
-            color: #4752c4;
+            background: var(--color-light-gray);
+            color: var(--color-primary-dark);
+            box-shadow: 0 6px 15px rgba(255,255,255,0.4);
         }
         .footer {
-            background: #1a1a1a;
-            color: #aaa;
+            background: #343a40;
+            color: #ced4da;
             text-align: center;
-            padding: 30px 0;
-            font-size: 0.9em;
+            padding: 35px 0;
+            font-size: 0.85em;
+        }
+
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .pricing-plan {
+            background: #fff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            width: calc(33.333% - 50px);
+            min-width: 270px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border-top: 5px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .pricing-plan.recommended {
+            border-top-color: var(--color-primary);
+            transform: scale(1.03);
+            z-index: 10;
+            box-shadow: 0 8px 30px rgba(138, 138, 255, 0.2);
+        }
+
+        .pricing-plan .plan-name {
+            font-family: var(--font-sans);
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .pricing-plan .plan-price {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+        }
+
+        .pricing-plan .plan-price span {
+            font-size: 0.5em;
+            font-weight: 400;
+            color: var(--color-text);
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 35px 0;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 12px;
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .plan-features li::before {
+            content: '\2713'; /* Checkmark */
+            color: var(--color-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .pricing-plan .btn {
+            width: 100%;
         }
 
         /* Scroll Animation Gimmick */
@@ -217,44 +320,89 @@
     <header class="header">
         <div class="container">
             <h1>BookHub</h1>
-            <p>本好きが集まる、オンラインコミュニティ</p>
+            <p>本と出会い、人とつながる場所</p>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h2>あなたの「好き」が見つかる場所</h2>
-            <p>お気に入りの一冊を共有し、新たな物語と出会おう。</p>
+            <h2 class="scroll-animate">新しい物語が、あなたを待っている。</h2>
+            <p class="scroll-animate">お気に入りの一冊を共有し、心温まる出会いを見つけましょう。</p>
             <!-- TODO: "your-invite-code" を実際のDiscord招待コードに置き換えてください -->
-            <a href="https://discord.gg/your-invite-code" class="btn discord" target="_blank"><i class="fa-brands fa-discord"></i> Discordでコミュニティに参加！</a>
+            <a href="https://discord.gg/your-invite-code" class="btn discord scroll-animate" target="_blank"><i class="fa-brands fa-discord"></i> コミュニティに参加する</a>
         </div>
     </section>
 
     <section class="section about">
         <div class="container">
-            <h3 class="scroll-animate">BookHubとは？</h3>
-            <p class="scroll-animate" style="max-width: 700px; margin: 0 auto 40px; font-size: 1.1em; color: #555;">
-                BookHubは、ジャンルを問わず様々な本について語り合えるオンラインコミュニティです。<br>
-                読書好きの仲間と感想を共有したり、今まで知らなかった素晴らしい本と出会うきっかけがここにあります。
-            </p>
+            <div class="section-header">
+                <h3 class="scroll-animate">BookHubってどんなところ？</h3>
+                <p class="scroll-animate">
+                    BookHubは、読書好きが集まって、お気に入りの本について語り合ったり、<br>
+                    新しい本と出会える、アットホームなオンラインコミュニティです。
+                </p>
+            </div>
         </div>
     </section>
 
-    <section class="section" style="background: linear-gradient(to bottom, #f4f7fc, #e8eef7);">
+    <section class="section" style="background-color: var(--color-light-gray);">
         <div class="container">
-            <h3 class="scroll-animate">コミュニティでできること</h3>
+            <div class="section-header">
+                <h3 class="scroll-animate">コミュニティでできること</h3>
+                <p class="scroll-animate">BookHubで体験できる、素敵な3つのこと。</p>
+            </div>
             <div class="features">
                 <div class="feature-item scroll-animate" style="transition-delay: 0s;">
-                    <h4>📚 本の推薦と発見</h4>
-                    <p>「#おすすめ本」チャンネルで、あなたのイチオシを投稿！他のメンバーの推薦から、新しいお気に入りが見つかります。</p>
+                    <h4>📚 おすすめの本を見つけよう</h4>
+                    <p>「#おすすめ本」チャンネルで、みんなのイチオシをチェック！きっと、あなたの心に響く一冊が見つかります。</p>
                 </div>
                 <div class="feature-item scroll-animate" style="transition-delay: 0.2s;">
-                    <h4>💬 感想を語り合う</h4>
-                    <p>読書会や感想共有会を定期的に開催。ネタバレOKのチャンネルで、物語の核心について深く語り合えます。</p>
+                    <h4>💬 感想をシェアしよう</h4>
+                    <p>読書会や感想共有会で、本への想いを語り合おう。ネタバレOKの場所で、深く語り合える仲間がいます。</p>
                 </div>
                 <div class="feature-item scroll-animate" style="transition-delay: 0.4s;">
-                    <h4>🎉 イベントに参加</h4>
-                    <p>著者イベントやテーマ別読書月間など、本がもっと好きになる特別企画も盛りだくさんです。</p>
+                    <h4>🎉 楽しいイベントに参加しよう</h4>
+                    <p>著者さんとの交流会や、テーマ別の読書月間など、本がもっと好きになるイベントをたくさん開催しています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section pricing">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="scroll-animate">参加プラン</h3>
+                <p class="scroll-animate">あなたにぴったりのプランを選んで、BookHubを楽しもう！</p>
+            </div>
+            <div class="pricing-table">
+                <div class="pricing-plan scroll-animate" style="transition-delay: 0s;">
+                    <h4 class="plan-name">ライトプラン</h4>
+                    <div class="plan-price">¥980<span>/月</span></div>
+                    <ul class="plan-features">
+                        <li>コミュニティへのアクセス</li>
+                        <li>月1回のオンライン読書会への参加</li>
+                    </ul>
+                    <a href="#" class="btn">プランを選択</a>
+                </div>
+                <div class="pricing-plan recommended scroll-animate" style="transition-delay: 0.2s;">
+                    <h4 class="plan-name">スタンダードプラン</h4>
+                    <div class="plan-price">¥1,980<span>/月</span></div>
+                    <ul class="plan-features">
+                        <li><b>ライト</b>プランの全機能</li>
+                        <li>テーマ別読書会への無制限アクセス</li>
+                        <li>過去の読書会アーカイブの閲覧</li>
+                    </ul>
+                    <a href="#" class="btn">プランを選択</a>
+                </div>
+                <div class="pricing-plan scroll-animate" style="transition-delay: 0.4s;">
+                    <h4 class="plan-name">プレミアムプラン</h4>
+                    <div class="plan-price">¥4,980<span>/月</span></div>
+                    <ul class="plan-features">
+                        <li><b>スタンダード</b>プランの全機能</li>
+                        <li>特別ゲストとの交流イベント参加権</li>
+                        <li>メンバー限定の先行情報</li>
+                    </ul>
+                    <a href="#" class="btn">プランを選択</a>
                 </div>
             </div>
         </div>
@@ -262,10 +410,10 @@
 
     <section class="cta">
         <div class="container">
-            <h3 class="scroll-animate">さあ、あなたも仲間になりませんか？</h3>
-            <p class="scroll-animate" style="margin-bottom: 30px;">下のボタンからDiscordサーバーに参加して、自己紹介から始めましょう！</p>
+            <h3 class="scroll-animate">さあ、あなたもBookHubの仲間になりませんか？</h3>
+            <p class="scroll-animate">下のボタンからDiscordサーバーに参加して、読書の世界を広げましょう！</p>
             <!-- TODO: "your-invite-code" を実際のDiscord招待コードに置き換えてください -->
-            <a href="https://discord.gg/your-invite-code" class="btn scroll-animate" style="transition-delay: 0.2s;" target="_blank"><i class="fa-solid fa-right-to-bracket"></i> 今すぐ無料で参加する</a>
+            <a href="https://discord.gg/your-invite-code" class="btn scroll-animate" style="transition-delay: 0.2s;" target="_blank"><i class="fa-solid fa-right-to-bracket"></i> 今すぐ参加する</a>
         </div>
     </section>
 
